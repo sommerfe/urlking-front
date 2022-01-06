@@ -1,20 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app_container">
+    <Main class="main" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+//import HelloWorld from './components/HelloWorld.vue'
+import Main from './components/Main.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    //HelloWorld,
+    Main
   }
 }
 </script>
 
 <style>
+.main {
+  grid-area: main;
+}
+.app_container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: ". main .";
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,3 +35,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+

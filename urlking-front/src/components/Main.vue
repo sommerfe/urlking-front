@@ -1,18 +1,21 @@
 <template>
-    <div class="main_container">
-        <img alt="Vue logo" src="../assets/logo.png">
+    <div class="main-container">
+        <img class="logo" alt="Urlking logo" src="../assets/urlking-logo1.png">
         <h1>Urlking</h1>
         <p>Explanation</p>
         <div class="">
             <Linker deviceName="Android" ph="Android Link" />
+            <Linker deviceName="iOS" ph="iOS Link" />
+            <Linker deviceName="Other" ph="Other Link" />
+        </div>
+        <div class="generate-container">
+            <button class="generate-button">Generate</button>
+            <span>Generated Link</span>
         </div>
     </div>
 
-<!--    <input type="text" placeholder="Android link">
-    <input type="text" placeholder="Apple link">
-    <input type="text" placeholder="Desktop link">
-    <button>Generate</button>
-    <span>Generated Link</span>-->
+
+
 </template>
 
 <script>
@@ -29,5 +32,18 @@ export default {
 </script>
 
 <style>
+.generate-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+}
 
+.generate-button {
+    width: 50%;
+}
+
+.logo {
+    width: 10%;
+}
 </style>

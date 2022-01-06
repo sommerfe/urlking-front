@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="linker-container">
         <span>{{ deviceName }}</span>
         <input type="text" :placeholder="[[ph]]">
     </div>
@@ -16,5 +16,19 @@
 </script>
 
 <style>
+ /*.linker-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+ }*/
+ .linker-container {
+     display: grid;
+     grid-template-columns: 1fr 2fr;
+     margin: 10px 0px;
+ }
 
+ input {
+     width: 80%;
+ }
 </style>

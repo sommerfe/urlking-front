@@ -1,5 +1,5 @@
 <template>
-  <div class="app_container">
+  <div class="app-container">
     <Main class="main" />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 .main {
   grid-area: main;
 }
-.app_container {
+.app-container {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: ". main .";

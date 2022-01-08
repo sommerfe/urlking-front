@@ -1,7 +1,7 @@
 <template>
     <div class="linker-container">
         <span>{{ deviceName }}</span>
-        <input type="text" :placeholder="[[ph]]">
+        <input type="text" :placeholder="[[ph]]" @change="changeHandler">
     </div>
 </template>
 
@@ -11,6 +11,11 @@
        props: {
            deviceName: String,
            ph: String
+       },
+       methods : {
+           changeHandler(e) {
+               this.$emit('inputChange', e.target.value)
+           }
        }
     }
 </script>

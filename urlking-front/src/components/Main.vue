@@ -2,7 +2,7 @@
     <div class="main-container">
         <img class="logo" alt="Urlking logo" src="../assets/urlking-logo1.png">
         <h1>Urlking</h1>
-        <p>Explanation</p>
+        <p>Insert URLs to create a redirect link automatically redirecting by device</p>
         <div class="">
             <Linker @inputChange="androidInput" deviceName="Android" ph="Android Link" />
             <Linker @inputChange="iosInput" deviceName="iOS" ph="iOS Link" />
@@ -11,6 +11,7 @@
         <div class="generate-container">
             <button class="generate-button" v-on:click="generateLink">Generate</button>
             <span>{{ generatedLink }}</span>
+            <span>{{ error }}</span>
         </div>
     </div>
 
@@ -28,28 +29,57 @@ export default {
        return { androidLink: '',
         iosLink: '',
         otherLink: '',
-        generatedLink: ''
+        generatedLink: '',
+        error: ''
        }
     },
+    title: 'UrlKing',
+
    methods: {
        androidInput(link) {
-           this.androidLink = link
-           console.log(link)
+           if (this.checkUrl(link)) {
+                this.androidLink = link
+                console.log(link)
+                this.error = ''
+           } else {
+                this.error = 'Invalid URL'
+           }
        },
 
        iosInput(link) {
-           this.iosLink = link
+            if (this.checkUrl(link)) {
+                this.iosLink = link
+                this.error = ''
+            } else {
+                this.error = 'Invalid URL'
+           }
        },
 
        otherInput(link) {
-           this.otherLink = link
+            if (this.checkUrl(link)) {
+                this.otherLink = link
+                this.error = ''
+            } else {
+                this.error = 'Invalid URL'
+           }
+       },
+
+       checkUrl (url) {
+            var expression = /[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi;
+            var regex = new RegExp(expression);
+            return url.match(regex);
        },
 
        generateLink () {
+           if (this.androidLink || this.iosLink || this.otherLink) {
             console.log(this.androidLink)
             console.log(this.iosLink)
             console.log(this.otherLink)
+            this.error = ''
             this.requestLink()
+           } else {
+               this.error = 'Please enter a valid link'
+           }
        },
 
        requestLink () {

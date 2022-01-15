@@ -31,9 +31,15 @@
      display: grid;
      grid-template-columns: 1fr 2fr;
      margin: 10px 0px;
+     align-items: center;
  }
 
  input {
      width: 80%;
+     padding: 5px;
+     font: inherit;
+     font-weight: 400;
+     border-radius: 5px;
+     border: 1px solid gray;
  }
 </style>

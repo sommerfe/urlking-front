@@ -1,17 +1,20 @@
 <template>
+
     <div class="main-container">
         <img class="logo" alt="Urlking logo" src="../assets/urlking-logo1.png">
-        <h1>Urlking</h1>
+        <h1 class="title">Urlking</h1>
         <p>Insert URLs to create a redirect link automatically redirecting by device</p>
-        <div class="">
+        <div class="linkContainer">
+            <Linker @inputChange="otherInput" deviceName="Default" ph="Default Link" />
             <Linker @inputChange="androidInput" deviceName="Android" ph="Android Link" />
             <Linker @inputChange="iosInput" deviceName="iOS" ph="iOS Link" />
-            <Linker @inputChange="otherInput" deviceName="Other" ph="Other Link" />
         </div>
         <div class="generate-container">
-            <button class="generate-button" v-on:click="generateLink">Generate</button>
-            <span>{{ generatedLink }}</span>
-            <span>{{ error }}</span>
+            <button class="generate-button" v-on:click="generateLink">Generate Redirect Link</button>
+            <div v-if="generatedLink" class="generatedLinkContainer">
+                <span v-if="generatedLink" class="generatedLink">{{ generatedLink }}</span>
+            </div>
+            <span v-if="error" class="generateError">{{ error }}</span>
         </div>
     </div>
 
@@ -29,8 +32,8 @@ export default {
        return { androidLink: '',
         iosLink: '',
         otherLink: '',
-        generatedLink: '',
-        error: ''
+        generatedLink: 'asdf',
+        error: 'asdf'
        }
     },
     title: 'UrlKing',
@@ -93,7 +96,7 @@ export default {
                     elseUrl: this.otherLink,
                     })
             };
-            //fetch("http://localhost:8080/link", requestOptions)
+            //fetch("http://localhost:8080/link", requestOptions) https://urlk.herokuapp.com/link/61e29af325bb90f8a67c4d86
             fetch("https://urlk.herokuapp.com/link", requestOptions)
                 .then(response => response.json())
                 .then(data => {
@@ -111,15 +114,61 @@ export default {
 .generate-container {
     display: flex;
     flex-direction: column;
+    margin: 20px 0px;
+    gap: 10px;
     align-items: center;
-    margin: 10px 0px;
+}
+
+p {
+    padding-bottom: 15px;
+    border-bottom: 1.5px solid #E0E0E0;
+}
+
+.linkContainer {
+    margin-top: 20px;
 }
 
 .generate-button {
     width: 50%;
+    padding: 5px;
+    font: inherit;
+    font-size: 1.2em;
+    background-color: #0C59AC;
+    color: white;
+    border: none;
+    font-weight: 700;
+}
+
+.generate-button:hover {
+    cursor: pointer;
+    background-color: #083D77;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 .logo {
     width: 10%;
+}
+
+.generatedLink{
+    margin: 10px 0px;
+    padding: 5px 20px;
+}
+
+.generateError {
+    background-color: #E78888;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.generatedLinkContainer {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #96CC8E;
+}
+
+.title {
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
 </style>

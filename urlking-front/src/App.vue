@@ -1,22 +1,29 @@
 <template>
+  <Header/>
   <div class="app-container">
     <Main class="main" />
   </div>
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
 import Main from './components/Main.vue'
+import Header from './components/Header.vue'
 export default {
   name: 'App',
   components: {
-    //HelloWorld,
+    Header,
     Main
   }
 }
 </script>
 
 <style>
+ @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+}
 .main {
   grid-area: main;
 }
@@ -27,12 +34,12 @@ export default {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Raleway, Dongle, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
 

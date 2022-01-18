@@ -1,9 +1,9 @@
 <template>
   <footer>
-        <div class="impressumHeader">
+        <div class="impressumHeader" v-on:click="toggleImpressum">
             Informations / Impressum
         </div>
-        <div class="impressumContainer">
+        <div v-if="showImpressum">
             <div class="openSource">
                 Open Source Repositories:
                 <a href="https://github.com/sommerfe/urlking-front">Frontend</a>
@@ -26,17 +26,23 @@
 export default {
   name: 'Footer',
   components: {
-  }
+  },
+    data() {
+        return {
+        showImpressum: false
+        }
+    },
+    methods: {
+        toggleImpressum() {
+            this.showImpressum = !this.showImpressum
+        }
+    }
 }
 </script>
 
 <style scoped>
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 5.4rem;
   background-color: lightgray;
   font-size: 0.7rem;
 }
@@ -45,6 +51,11 @@ footer {
     font-size: 0.8rem;
     font-weight: bold;
     margin: 5px 0px;
+    cursor: pointer;
+}
+
+.impressumHeader:hover {
+    text-decoration: underline;
 }
 
 .openSource {
@@ -65,5 +76,6 @@ a {
 }
 
 .impressumContainer {
+    display: none;
 }
 </style>

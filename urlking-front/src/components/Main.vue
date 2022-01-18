@@ -1,5 +1,4 @@
 <template>
-
     <div class="main-container">
         <img class="logo" alt="Urlking logo" src="../assets/urlking-logo1.png">
         <h1 class="title">Urlking</h1>
@@ -32,8 +31,8 @@ export default {
        return { androidLink: '',
         iosLink: '',
         otherLink: '',
-        generatedLink: 'asdf',
-        error: 'asdf'
+        generatedLink: '',
+        error: ''
        }
     },
     title: 'UrlKing',
